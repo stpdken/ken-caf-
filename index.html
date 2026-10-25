@@ -1,1 +1,964 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#493329">
+  <meta name="description" content="Welcome to Kens Café — coffee, matcha, and sweet moments.">
+  <title>Kens Café | Coffee & Sweet Moments</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #F5F0E8;
+      --paper: #FFFCF7;
+      --brown: #493329;
+      --coffee: #705342;
+      --light-brown: #E7D8C8;
+      --white: #FFFFFF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--brown);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 7%;
+      background: rgba(255, 252, 247, .96);
+      border-bottom: 1px solid #e9dfd3;
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--coffee);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      font-size: 13px;
+    }
+
+    .nav-links a:hover {
+      color: #9b7053;
+    }
+
+    .nav-cta {
+      background: var(--brown);
+      color: white !important;
+      padding: 10px 17px;
+      border-radius: 30px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--brown);
+      font-size: 25px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+      padding: 65px 7%;
+      min-height: 570px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--coffee);
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(43px, 6vw, 72px);
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    h1 em {
+      color: var(--coffee);
+      font-weight: 500;
+    }
+
+    .hero-copy {
+      max-width: 470px;
+      color: #75665b;
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      border: 1px solid var(--brown);
+      border-radius: 30px;
+      padding: 13px 23px;
+      font-size: 13px;
+      transition: .25s ease;
+    }
+
+    .button-dark {
+      background: var(--brown);
+      color: white;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: var(--coffee);
+      color: white;
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      height: 430px;
+      border-radius: 180px 180px 12px 12px;
+      animation: floatIn 1s ease both;
+    }
+
+    .image-note {
+      position: absolute;
+      bottom: 22px;
+      left: -20px;
+      background: var(--paper);
+      padding: 14px 19px;
+      border-radius: 5px;
+      box-shadow: 0 10px 30px #49332912;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .image-note small {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      color: var(--coffee);
+      letter-spacing: 1px;
+    }
+
+    .section {
+      padding: 80px 7%;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 570px;
+      margin: 0 auto 35px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(33px, 5vw, 46px);
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: #75665b;
+      font-size: 14px;
+    }
+
+    .story {
+      background: var(--paper);
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .story img {
+      height: 360px;
+      border-radius: 8px;
+    }
+
+    .story h2 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .story p {
+      color: #75665b;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .menu-section {
+      background: var(--cream);
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+      margin: 25px 0 35px;
+    }
+
+    .filter-btn {
+      background: transparent;
+      color: var(--brown);
+      border: 1px solid #d7c8b8;
+      padding: 9px 17px;
+      border-radius: 30px;
+      font-size: 12px;
+      transition: .2s;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--brown);
+      color: white;
+      border-color: var(--brown);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .product-card {
+      background: var(--paper);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px #49332912;
+    }
+
+    .product-card[hidden] {
+      display: none;
+    }
+
+    .product-card img {
+      height: 230px;
+      transition: transform .5s;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .product-info {
+      padding: 19px;
+    }
+
+    .product-info h3 {
+      font-size: 22px;
+      margin-bottom: 7px;
+    }
+
+    .product-info p {
+      color: #837368;
+      font-size: 12px;
+      min-height: 38px;
+      margin-bottom: 15px;
+    }
+
+    .product-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .price {
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .add-btn {
+      border: none;
+      border-radius: 25px;
+      background: var(--brown);
+      color: white;
+      padding: 10px 13px;
+      font-size: 11px;
+    }
+
+    .add-btn:hover {
+      background: var(--coffee);
+    }
+
+    .order-section {
+      background: var(--paper);
+    }
+
+    .order-box {
+      max-width: 650px;
+      margin: auto;
+      padding: 28px;
+      border: 1px solid #e5d9cb;
+      border-radius: 10px;
+      background: white;
+    }
+
+    .order-box h3 {
+      font-size: 27px;
+      margin-bottom: 7px;
+    }
+
+    .order-subtitle {
+      font-size: 13px;
+      color: #837368;
+      margin-bottom: 20px;
+    }
+
+    .order-list {
+      list-style: none;
+      margin-bottom: 18px;
+    }
+
+    .order-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee5dc;
+      font-size: 13px;
+    }
+
+    .remove-btn {
+      border: none;
+      background: none;
+      color: #956b5a;
+      font-size: 11px;
+      margin-left: 8px;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      padding: 14px 0 20px;
+    }
+
+    .order-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .order-actions button {
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .clear-btn {
+      background: transparent;
+      color: var(--brown);
+      border: 1px solid #d7c8b8;
+      border-radius: 30px;
+      padding: 12px;
+    }
+
+    .notice {
+      color: var(--coffee);
+      font-size: 12px;
+      margin-top: 14px;
+      min-height: 20px;
+    }
+
+    .visit {
+      text-align: center;
+      background: var(--brown);
+      color: var(--cream);
+      padding: 65px 7%;
+    }
+
+    .visit h2 {
+      font-size: clamp(34px, 5vw, 48px);
+      margin-bottom: 14px;
+    }
+
+    .visit p {
+      color: #e4d5c8;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    .visit .button {
+      border-color: var(--cream);
+      color: var(--brown);
+      background: var(--cream);
+    }
+
+    footer {
+      padding: 25px 7%;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      background: #38251e;
+      color: #e9ded4;
+      font-size: 11px;
+    }
+
+    .reveal {
+      animation: fadeUp .8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 760px) {
+      .navbar {
+        padding: 14px 5%;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 61px;
+        left: 0;
+        right: 0;
+        background: var(--paper);
+        padding: 22px 7%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        border-bottom: 1px solid #e9dfd3;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-cta {
+        text-align: center;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 48px 6%;
+        gap: 30px;
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      .hero-image img {
+        height: 340px;
+      }
+
+      .image-note {
+        left: 10px;
+      }
+
+      .section {
+        padding: 60px 6%;
+      }
+
+      .story {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .story img {
+        height: 280px;
+      }
+
+      .story h2 {
+        font-size: 35px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .product-card img {
+        height: 160px;
+      }
+
+      .product-info {
+        padding: 13px;
+      }
+
+      .product-info h3 {
+        font-size: 18px;
+      }
+
+      .product-info p {
+        font-size: 11px;
+      }
+
+      .price {
+        font-size: 14px;
+      }
+
+      .add-btn {
+        padding: 9px 10px;
+      }
+
+      .order-box {
+        padding: 20px;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-card img {
+        height: 220px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="#home" class="logo">Kens<span>.</span> Café</a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Open navigation" aria-expanded="false">☰</button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#story">Our Story</a>
+      <a href="#menu">Menu</a>
+      <a href="#order">My Order</a>
+      <a href="#visit" class="nav-cta">Visit Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="reveal">
+        <p class="eyebrow">A little cup of happiness</p>
+        <h1>Your daily dose of <em>comfort.</em></h1>
+        <p class="hero-copy">
+          Good drinks, soft moments, and little reasons to slow down.
+          Welcome to Kens Café, your cozy corner for coffee and matcha.
+        </p>
+        <a class="button button-dark" href="#menu">Explore Our Menu ↗</a>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1000&q=85"
+          alt="Warm and cozy café interior">
+        <div class="image-note">
+          Made with care ♡
+          <small>YOUR COZY COFFEE CORNER</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section story" id="story">
+      <div>
+        <img
+          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85"
+          alt="Coffee being prepared in a café">
+      </div>
+
+      <div>
+        <p class="eyebrow">The Kens Café story</p>
+        <h2>Simple drinks. Meaningful moments.</h2>
+        <p>
+          At Kens Café, we believe that happiness can be found in the
+          little things — a comforting cup, a good conversation, or a
+          quiet moment just for yourself.
+        </p>
+        <p>
+          From earthy matcha to rich espresso, every drink is inspired
+          by the simple joy of enjoying something you love.
+        </p>
+        <a href="#menu" class="button">Find Your Favorite</a>
+      </div>
+    </section>
+
+    <section class="section menu-section" id="menu">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Made for your mood</p>
+        <h2>A sip of something special.</h2>
+        <p>Find your new favorite from our matcha, coffee, and creamy creations.</p>
+      </div>
+
+      <div class="filter-row" aria-label="Filter drinks">
+        <button class="filter-btn active" data-filter="all">All Drinks</button>
+        <button class="filter-btn" data-filter="matcha">Matcha</button>
+        <button class="filter-btn" data-filter="coffee">Coffee</button>
+        <button class="filter-btn" data-filter="special">Special Blends</button>
+      </div>
+
+      <div class="product-grid">
+
+        <article class="product-card" data-category="matcha">
+          <img
+            src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=700&q=80"
+            alt="Matcha drink">
+          <div class="product-info">
+            <h3>Matcha</h3>
+            <p>Earthy, smooth, and wonderfully refreshing.</p>
+            <div class="product-bottom">
+              <span class="price">₱99</span>
+              <button class="add-btn" data-name="Matcha" data-price="99">+ Add</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="matcha">
+          <img
+            src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=700&q=80"
+            alt="Matcha drink with a creamy finish">
+          <div class="product-info">
+            <h3>Oreo Matcha</h3>
+            <p>Our matcha favorite with a cookies-and-cream twist.</p>
+            <div class="product-bottom">
+              <span class="price">₱129</span>
+              <button class="add-btn" data-name="Oreo Matcha" data-price="129">+ Add</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="coffee">
+          <img
+            src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80"
+            alt="Iced coffee drink">
+          <div class="product-info">
+            <h3>Caramel Macchiato</h3>
+            <p>Espresso, creamy milk, and caramel sweetness.</p>
+            <div class="product-bottom">
+              <span class="price">₱129</span>
+              <button class="add-btn" data-name="Caramel Macchiato" data-price="129">+ Add</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="matcha">
+          <img
+            src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=700&q=80"
+            alt="Matcha and espresso inspired drink">
+          <div class="product-info">
+            <h3>Matcha Espresso</h3>
+            <p>A bold espresso meets the earthy taste of matcha.</p>
+            <div class="product-bottom">
+              <span class="price">₱139</span>
+              <button class="add-btn" data-name="Matcha Espresso" data-price="139">+ Add</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="special">
+          <img
+            src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=700&q=80"
+            alt="Creamy blended drink">
+          <div class="product-info">
+            <h3>Cookies and Cream</h3>
+            <p>A creamy, sweet treat inspired by chocolate cookies.</p>
+            <div class="product-bottom">
+              <span class="price">₱129</span>
+              <button class="add-btn" data-name="Cookies and Cream" data-price="129">+ Add</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="coffee">
+          <img
+            src="https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&w=700&q=80"
+            alt="Rich chocolate coffee">
+          <div class="product-info">
+            <h3>Mocha</h3>
+            <p>Rich espresso blended with comforting chocolate notes.</p>
+            <div class="product-bottom">
+              <span class="price">₱119</span>
+              <button class="add-btn" data-name="Mocha" data-price="119">+ Add</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <p style="text-align:center;color:#837368;font-size:11px;margin-top:25px;">
+        Menu prices shown are sample prices. Please update them to match your actual menu.
+      </p>
+    </section>
+
+    <section class="section order-section" id="order">
+      <div class="section-heading">
+        <p class="eyebrow">Your little coffee moment</p>
+        <h2>Your Order</h2>
+        <p>Add your favorite drinks and prepare your order below.</p>
+      </div>
+
+      <div class="order-box">
+        <h3>My café order ☕</h3>
+        <p class="order-subtitle">Your selected drinks will appear here.</p>
+
+        <ul class="order-list" id="orderList">
+          <li>Your order is empty for now.</li>
+        </ul>
+
+        <div class="total-row">
+          <span>Total</span>
+          <span id="orderTotal">₱0</span>
+        </div>
+
+        <div class="order-actions">
+          <button class="button button-dark" id="copyOrder">Copy My Order</button>
+          <button class="clear-btn" id="clearOrder">Clear Order</button>
+        </div>
+
+        <p class="notice" id="orderNotice" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="visit" id="visit">
+      <p class="eyebrow" style="color:#d9bda5;">Your cozy corner awaits</p>
+      <h2>Let's make today a little sweeter.</h2>
+      <p>Good coffee. Good company. Good moments at Kens Café.</p>
+      <a href="#menu" class="button">Choose Your Drink ↗</a>
+    </section>
+  </main>
+
+  <footer>
+    <span class="logo">Kens Café<span>.</span></span>
+    <span>Made with care and coffee ♡</span>
+    <span>© <span id="year"></span> Kens Café</span>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.textContent = isOpen ? '✕' : '☰';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
+      });
+    });
+
+    // Menu filters
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(item => item.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.dataset.filter;
+
+        productCards.forEach(card => {
+          card.hidden = filter !== 'all' && card.dataset.category !== filter;
+        });
+      });
+    });
+
+    // Shopping cart / order builder
+    const cart = [];
+    const orderList = document.getElementById('orderList');
+    const orderTotal = document.getElementById('orderTotal');
+    const orderNotice = document.getElementById('orderNotice');
+
+    function formatPrice(amount) {
+      return '₱' + amount.toLocaleString('en-PH');
+    }
+
+    function renderCart() {
+      orderList.innerHTML = '';
+
+      if (cart.length === 0) {
+        const empty = document.createElement('li');
+        empty.textContent = 'Your order is empty for now.';
+        orderList.appendChild(empty);
+      } else {
+        cart.forEach((item, index) => {
+          const li = document.createElement('li');
+
+          const details = document.createElement('span');
+          details.textContent = item.name + ' × ' + item.quantity;
+
+          const right = document.createElement('span');
+          right.textContent = formatPrice(item.price * item.quantity) + ' ';
+
+          const remove = document.createElement('button');
+          remove.className = 'remove-btn';
+          remove.textContent = 'Remove';
+          remove.setAttribute('aria-label', 'Remove ' + item.name);
+          remove.addEventListener('click', () => {
+            cart.splice(index, 1);
+            renderCart();
+            orderNotice.textContent = 'Item removed from your order.';
+          });
+
+          right.appendChild(remove);
+          li.append(details, right);
+          orderList.appendChild(li);
+        });
+      }
+
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      orderTotal.textContent = formatPrice(total);
+    }
+
+    document.querySelectorAll('.add-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const name = button.dataset.name;
+        const price = Number(button.dataset.price);
+        const existing = cart.find(item => item.name === name);
+
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          cart.push({ name, price, quantity: 1 });
+        }
+
+        renderCart();
+        orderNotice.textContent = name + ' added to your order!';
+      });
+    });
+
+    document.getElementById('clearOrder').addEventListener('click', () => {
+      cart.length = 0;
+      renderCart();
+      orderNotice.textContent = 'Your order has been cleared.';
+    });
+
+    document.getElementById('copyOrder').addEventListener('click', async () => {
+      if (cart.length === 0) {
+        orderNotice.textContent = 'Please add a drink to your order first.';
+        return;
+      }
+
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const lines = cart.map(item =>
+        item.name + ' x ' + item.quantity + ' — ' + formatPrice(item.price * item.quantity)
+      );
+
+      const orderText = [
+        'Kens Café Order',
+        '',
+        ...lines,
+        '',
+        'Total: ' + formatPrice(total)
+      ].join('\n');
+
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(orderText);
+          orderNotice.textContent = 'Order copied! You can paste it into a message.';
+        } else {
+          const textArea = document.createElement('textarea');
+          textArea.value = orderText;
+          textArea.style.position = 'fixed';
+          textArea.style.opacity = '0';
+          document.body.appendChild(textArea);
+          textArea.select();
+          const copied = document.execCommand('copy');
+          textArea.remove();
+          orderNotice.textContent = copied
+            ? 'Order copied! You can paste it into a message.'
+            : 'Copy unavailable. Please select and copy your order manually.';
+        }
+      } catch (error) {
+        orderNotice.textContent = 'Copy unavailable. Please try again.';
+      }
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    renderCart();
+  </script>
+
+</body>
+</html>
+
