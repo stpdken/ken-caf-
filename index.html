@@ -1,0 +1,809 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101210">
+  <meta name="description" content="Discover Kens Café — handcrafted coffee, delicious treats, and a modern café experience.">
+  <title>Kens Café | Brewed for the Bold</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #101210;
+      --panel: #191c19;
+      --gold: #d8a66a;
+      --cream: #f5eadb;
+      --muted: #b2b5af;
+      --border: rgba(216,166,106,.22);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    .announcement {
+      text-align: center;
+      padding: 9px 12px;
+      background: var(--gold);
+      color: #17130e;
+      font-size: .75rem;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(16,18,16,.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: .87rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-cta, .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      transition: .3s ease;
+    }
+
+    .nav-cta, .btn-primary {
+      background: var(--gold);
+      color: #17130e;
+      font-weight: 700;
+    }
+
+    .btn:hover, .nav-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(216,166,106,.16);
+    }
+
+    .menu-toggle {
+      display: none;
+      color: var(--cream);
+      background: none;
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+
+    .hero {
+      min-height: 590px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 50px;
+      padding-top: 75px;
+      padding-bottom: 75px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 6vw, 5.3rem);
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    h1 span, .gold {
+      color: var(--gold);
+    }
+
+    .hero-copy {
+      max-width: 480px;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-outline {
+      color: var(--cream);
+      background: transparent;
+    }
+
+    .hero-image {
+      position: relative;
+      min-height: 430px;
+    }
+
+    .hero-image img {
+      height: 430px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .image-label {
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      right: 18px;
+      padding: 15px;
+      background: rgba(16,18,16,.88);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      border-radius: 5px;
+    }
+
+    .image-label small {
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    section {
+      padding: 85px 0;
+      scroll-margin-top: 90px;
+    }
+
+    .section-head {
+      max-width: 620px;
+      margin-bottom: 38px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      padding: 27px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: transform .3s, border-color .3s;
+    }
+
+    .feature:hover, .product:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .feature h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .menu-section {
+      background: #151815;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .product {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      border-radius: 6px;
+      transition: .3s ease;
+    }
+
+    .product img {
+      height: 220px;
+      transition: transform .5s;
+    }
+
+    .product:hover img {
+      transform: scale(1.04);
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-info h3 {
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+
+    .product-info p {
+      color: var(--muted);
+      font-size: .88rem;
+      min-height: 48px;
+    }
+
+    .product-bottom {
+      margin-top: 17px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .price {
+      color: var(--gold);
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .add-btn {
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid var(--gold);
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: .8rem;
+    }
+
+    .add-btn:hover {
+      background: var(--gold);
+      color: #17130e;
+    }
+
+    .cart-status {
+      color: var(--gold);
+      margin-top: 22px;
+      font-size: .92rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .about-grid img {
+      height: 390px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .about-copy h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 20px;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      margin-bottom: 17px;
+    }
+
+    .visit {
+      background: var(--panel);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .visit .section-head {
+      margin: 0 auto 28px;
+    }
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    footer p, footer a {
+      color: var(--muted);
+      font-size: .83rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .notice {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translate(-50%, 20px);
+      background: var(--gold);
+      color: #17130e;
+      padding: 12px 20px;
+      border-radius: 5px;
+      z-index: 30;
+      opacity: 0;
+      pointer-events: none;
+      transition: .3s;
+      width: max-content;
+      max-width: 90%;
+      font-size: .9rem;
+    }
+
+    .notice.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 760px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        right: 0;
+        background: #151815;
+        padding: 22px 5%;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding-top: 55px;
+      }
+
+      .hero-image, .hero-image img {
+        min-height: 320px;
+        height: 320px;
+      }
+
+      .features, .products {
+        grid-template-columns: 1fr;
+      }
+
+      .product img {
+        height: 250px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .about-grid img {
+        height: 300px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="announcement">
+    YOUR DAILY CUP OF SOMETHING SPECIAL ☕
+  </div>
+
+  <header>
+    <nav class="container">
+      <a class="logo" href="#home">KENS<span>CAFÉ.</span></a>
+
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Toggle navigation" aria-expanded="false">
+        ☰ Menu
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#experience">Experience</a>
+        <a href="#menu">Our Menu</a>
+        <a href="#about">Our Story</a>
+        <a href="#visit">Visit Us</a>
+      </div>
+
+      <a href="#menu" class="nav-cta">Find Your Brew ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div class="reveal">
+        <p class="eyebrow">Coffee · Connection · Creativity</p>
+
+        <h1>Brewed for<br>the <span>Bold.</span></h1>
+
+        <p class="hero-copy">
+          Welcome to Kens Café — your modern coffee escape.
+          Discover handcrafted favorites, comforting flavors,
+          and a space made for your everyday moments.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#menu" class="btn btn-primary">Explore Our Menu ↗</a>
+          <a href="#about" class="btn btn-outline">Discover Our Story</a>
+        </div>
+      </div>
+
+      <div class="hero-image reveal">
+        <img
+          src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1000&q=85"
+          alt="Freshly prepared coffee in a cozy café"
+          fetchpriority="high">
+
+        <div class="image-label">
+          <small>THE KENS EXPERIENCE</small>
+          <h3>Good coffee. Better moments.</h3>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">More than just coffee</p>
+          <h2>Your space. Your pace. <span class="gold">Your café.</span></h2>
+          <p>
+            Whether you're catching up with friends, taking a break,
+            or working on your next big idea, there's a place for you here.
+          </p>
+        </div>
+
+        <div class="features">
+          <article class="feature reveal">
+            <div class="feature-icon">☕</div>
+            <h3>Crafted with Care</h3>
+            <p>
+              Enjoy coffee favorites prepared with attention
+              to flavor, quality, and every little detail.
+            </p>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature-icon">✦</div>
+            <h3>Modern Atmosphere</h3>
+            <p>
+              A contemporary café aesthetic designed to make
+              your coffee breaks feel a little more special.
+            </p>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature-icon">♡</div>
+            <h3>Made for Moments</h3>
+            <p>
+              Meet, unwind, study, or simply enjoy a cup.
+              Your everyday moments matter here.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">A little something for you</p>
+          <h2>Meet Your <span class="gold">Next Favorite.</span></h2>
+          <p>
+            Explore a few featured drinks from the Kens Café menu.
+            Sample prices are shown for this website demo.
+          </p>
+        </div>
+
+        <div class="products">
+          <article class="product reveal">
+            <img
+              src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80"
+              alt="Iced latte served in a glass"
+              loading="lazy">
+
+            <div class="product-info">
+              <h3>Iced Latte</h3>
+              <p>Espresso and chilled milk over ice. Simple, smooth, satisfying.</p>
+              <div class="product-bottom">
+                <span class="price">₱120</span>
+                <button class="add-btn" data-product="Iced Latte">+ Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product reveal">
+            <img
+              src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80"
+              alt="Freshly brewed coffee"
+              loading="lazy">
+
+            <div class="product-info">
+              <h3>Classic Americano</h3>
+              <p>Bold espresso with hot water for a clean, rich coffee taste.</p>
+              <div class="product-bottom">
+                <span class="price">₱100</span>
+                <button class="add-btn" data-product="Classic Americano">+ Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product reveal">
+            <img
+              src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80"
+              alt="Creamy blended coffee drink"
+              loading="lazy">
+
+            <div class="product-info">
+              <h3>Caramel Blend</h3>
+              <p>A sweet, creamy coffee-inspired treat for your afternoon.</p>
+              <div class="product-bottom">
+                <span class="price">₱145</span>
+                <button class="add-btn" data-product="Caramel Blend">+ Add</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="cart-status" id="cartStatus" aria-live="polite">
+          Your café picks: 0 items
+        </p>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="reveal">
+          <img
+            src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1000&q=85"
+            alt="Warm and modern coffee shop interior"
+            loading="lazy">
+        </div>
+
+        <div class="about-copy reveal">
+          <p class="eyebrow">The story behind the cup</p>
+          <h2>A little coffee.<br><span class="gold">A lot of character.</span></h2>
+
+          <p>
+            Kens Café is built around a simple idea: coffee can make
+            ordinary moments feel memorable.
+          </p>
+
+          <p>
+            With a modern atmosphere, inviting flavors, and a love for
+            the coffee experience, we aim to make every visit feel
+            like a welcome pause in your day.
+          </p>
+
+          <a href="#visit" class="btn btn-outline">Come Say Hello ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit" id="visit">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Your next coffee stop</p>
+          <h2>Let's Make It a <span class="gold">Coffee Day.</span></h2>
+          <p>
+            Have a question or want to learn more about Kens Café?
+            Get in touch and make your next coffee moment count.
+          </p>
+        </div>
+
+        <a href="mailto:hello@kenscafe.example"
+          class="btn btn-primary reveal">Contact Kens Café ↗</a>
+
+        <p style="color:var(--muted);font-size:.82rem;margin-top:18px">
+          Replace the sample contact details with your real café information.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="logo" href="#home">KENS<span>CAFÉ.</span></a>
+      <p>© <span id="year"></span> Kens Café. Brewed with character.</p>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+  <script>
+    // Mobile navigation
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      menuToggle.textContent = isOpen ? '✕ Close' : '☰ Menu';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰ Menu';
+      });
+    });
+
+    // Animated sections
+    const revealItems = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('visible'));
+    }
+
+    // Demo shopping selection
+    let cartCount = 0;
+    const selectedItems = [];
+
+    const cartStatus = document.getElementById('cartStatus');
+    const notice = document.getElementById('notice');
+    let noticeTimeout;
+
+    document.querySelectorAll('.add-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const productName = button.dataset.product;
+
+        cartCount++;
+        selectedItems.push(productName);
+
+        cartStatus.textContent =
+          `Your café picks: ${cartCount} item${cartCount === 1 ? '' : 's'} — ` +
+          selectedItems.join(', ');
+
+        notice.textContent = `${productName} added to your café picks!`;
+        notice.classList.add('show');
+
+        clearTimeout(noticeTimeout);
+        noticeTimeout = setTimeout(() => {
+          notice.classList.remove('show');
+        }, 2200);
+      });
+    });
+
+    // Automatic copyright year
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
